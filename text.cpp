@@ -2,16 +2,20 @@
 
 Text::~Text() = default;
 
-Text::Text(const std::string &str) : binary_str(str), index(0) {
+Text::Text(const std::string &str) : binary_str(str), index(0), cnt(0) {
     len = binary_str.size();
 }
 
-size_t Text::GetSize() const {
+size_t Text::GetLen() const {
     return len;
 }
 
 void Text::SetIndex(size_t _index) {
     index = _index;
+}
+
+size_t Text::GetSize() const {
+    return cnt;
 }
 
 UtfText::UtfText(const std::string &str) : Text(str) {}
@@ -22,6 +26,7 @@ bool UtfText::ReadSingleChar(std::string &parsed_line) {
     if (_len == 0 && _len + index > index) return false;
     parsed_line = binary_str.substr(index, _len);
     index += _len;
+    cnt++;
     return true;
 }
 

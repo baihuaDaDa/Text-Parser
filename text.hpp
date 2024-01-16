@@ -8,11 +8,14 @@ protected:
     std::string binary_str;
     size_t len;
     size_t index;
+    size_t cnt;
 
 public:
     Text(const std::string &);
 
     virtual ~Text();
+
+    size_t GetLen() const;
 
     size_t GetSize() const;
 
